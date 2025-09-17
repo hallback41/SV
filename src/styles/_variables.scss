@@ -1,0 +1,11 @@
+@use 'helpers' as *;
+
+:root {
+  --container-width: 1200px;
+  --container-padding-x: 20px;
+
+  @include mobile {
+    --container-width: 600px;
+    --container-padding-x: 10px;
+  }
+}
