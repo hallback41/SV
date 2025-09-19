@@ -1,5 +1,5 @@
 import { Trans } from 'react-i18next'
-import styles from './Header.module.scss'
+import styles from './_Header.module.scss'
 
 const Header = () => {
   return (

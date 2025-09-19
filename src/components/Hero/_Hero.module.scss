@@ -1,21 +1,20 @@
 @use '../../styles/helpers' as *;
 
-.heroSticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.heroWrapper {
-  height: 200vh; // важно! чтобы можно было прокрутить
-  position: relative;
-}
-
 .hero {
   padding: var(--padding);
   background-color: var(--color-bg-main);
   color: var(--color-text-secondary);
+
+  &Wrapper {
+    height: 200vh; // важно! чтобы можно было прокрутить
+    position: relative;
+  }
+
+  &Sticky {
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+  }
 
   &__box {
     background-color: var(--color-bg-main);
@@ -35,13 +34,33 @@
       'skills pop1 pop2'
       'skills pop3 pop4';
     grid-template-columns: 1fr 1fr 2fr;
-    gap: rem(10);
+    gap: rem(14);
   }
 
   &__photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     grid-area: photo;
     padding: 0;
     border-color: var(--color-bg-accent-button);
+
+    &--Polaroid {
+      background: white;
+      padding: 12px 12px 30px; // нижний отступ шире
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      width: fit-content;
+      text-align: center;
+      display: inline-block;
+
+      .caption {
+        margin-top: 8px;
+        font-size: rem(16);
+        color: #333;
+      }
+    }
   }
 
   &__yearBlock {
@@ -49,23 +68,28 @@
     max-height: rem(50);
     display: flex;
     align-items: center;
-    justify-content: center;
+    color: var(--color-bg-highlight);
   }
 
   &__textBlock {
     grid-area: text;
     overflow: hidden;
     position: relative;
+    border: none;
+    padding: 0;
     width: 100%;
   }
 
   &__textSlides {
+    height: 100%;
     display: flex;
     width: 100%;
     will-change: transform;
+    gap: rem(14);
   }
 
   &__textSlide {
+    height: 100%;
     width: 100%;
     flex-shrink: 0;
     padding: rem(32);
@@ -84,15 +108,37 @@
   }
 
   &__skillsSlides {
+    height: 100%;
     display: flex;
     width: 100%;
     will-change: transform;
+    gap: rem(14);
   }
 
   &__skillSlide {
+    height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background-color: var(--color-bg-main);
+    gap: rem(14);
     flex-shrink: 0;
+    padding: 0;
     box-sizing: border-box;
+    z-index: -1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 50%;
+      width: 100%;
+      background-color: var(--color-bg-highlight);
+      z-index: -1;
+    }
   }
 
   &__pop--1 {

@@ -336,7 +336,7 @@ a[class] {
   }
 }
 .theme-90s {
-  --color-bg-main: #a1b28c;
+  --color-bg-main: #9ba98a;
   --color-bg-panel: #5a6863;
   --color-bg-highlight: #762e38;
   --color-bg-pixel-board: #7e8183;
@@ -350,7 +350,7 @@ a[class] {
   --color-pixel-blue: #3596f7;
   --color-pixel-red: #d34242;
   --padding: 0.625rem;
-  --border-color: #546946;
+  --border-color: #5b6a51;
   --border-width: 0.25rem;
   --border-radius: 2px;
   --shadow-soft: 1px 1px 0 #777;
