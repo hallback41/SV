@@ -4,6 +4,7 @@
   padding: var(--padding);
   background-color: var(--color-bg-main);
   color: var(--color-text-secondary);
+  z-index: -1;
 
   &Wrapper {
     height: 200vh; // важно! чтобы можно было прокрутить
@@ -17,11 +18,13 @@
   }
 
   &__box {
+    position: relative;
     background-color: var(--color-bg-main);
     font-family: var(--font-family-main);
     padding: var(--padding);
     transition: var(--transition);
-    border: rem(4) solid var(--border-color);
+    border: rem(8) double var(--color-text-secondary);
+    z-index: 1;
   }
 
   &__grid {
@@ -71,29 +74,73 @@
     color: var(--color-bg-highlight);
   }
 
+  &__yearText {
+    @include fluid-text(32, 17);
+  }
+
   &__textBlock {
     grid-area: text;
     overflow: hidden;
     position: relative;
-    border: none;
     padding: 0;
     width: 100%;
   }
 
   &__textSlides {
-    height: 100%;
     display: flex;
     width: 100%;
     will-change: transform;
     gap: rem(14);
   }
 
+  &__inlineImage {
+    width: rem(98); // или 32–48 в зависимости от масштаба
+    height: auto;
+    margin: 0 rem(6);
+    vertical-align: middle;
+    float: left; // или left для другого эффекта
+    shape-outside: margin-box;
+    border-radius: rem(3);
+  }
+
   &__textSlide {
-    height: 100%;
     width: 100%;
     flex-shrink: 0;
     padding: rem(32);
     box-sizing: border-box;
+  }
+
+  &__title {
+    font-size: rem(36);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: rem(24);
+  }
+
+  &__textContent {
+    display: block; // блок вместо флекса
+    position: relative;
+  }
+
+  &__image {
+    float: right;
+    width: rem(260);
+    height: auto;
+    margin-left: rem(14);
+    margin-bottom: rem(16);
+    border-radius: rem(4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: rotate(3deg);
+  }
+
+  &__text {
+    color: #333;
+    line-height: 1.6;
+    @include fluid-text(16, 12);
+    span {
+      color: var(--color-bg-highlight);
+      font-weight: bold;
+    }
   }
 
   &__textBlock--scrolled .hero__textSlider {

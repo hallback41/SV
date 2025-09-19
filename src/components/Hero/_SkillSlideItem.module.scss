@@ -3,7 +3,7 @@
 .hero__skillSlideInner {
   display: flex;
   gap: rem(15);
-  padding: rem(8);
+  padding: rem(12);
   @include fluid-text(16, 8);
   align-items: center;
 

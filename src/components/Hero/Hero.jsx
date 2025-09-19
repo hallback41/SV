@@ -16,6 +16,10 @@ import diablo from '@/assets/gifs/diablo.gif'
 import naruto from '@/assets/gifs/naruto.gif'
 import l2 from '@/assets/images/hero/l2.png'
 import mortal from '@/assets/gifs/mortal-combat.gif'
+import mePlayingSega from '@/assets/images/hero/mePlayingSega.png'
+import sega from '@/assets/images/hero/sega.png'
+import tetris from '@/assets/images/hero/tetris.png'
+import ps1 from '@/assets/images/hero/ps1.png'
 
 const Hero = () => {
   const slides = [
@@ -45,7 +49,7 @@ const Hero = () => {
     offset: ['start start', 'end end'],
   })
 
-  const xText = useTransform(scrollYProgress, [0, 1], ['0%', '-304.5%'])
+  const xText = useTransform(scrollYProgress, [0, 1], ['0%', '-304.6%'])
   const xSkills = useTransform(scrollYProgress, [0, 1], ['0%', '-105%'])
 
   return (
@@ -54,35 +58,85 @@ const Hero = () => {
         <Header />
         <div className={`${styles.hero} container`}>
           <div className={styles.hero__grid}>
-            <div
-              className={`${styles.hero__photo} ${styles.hero__box} ${styles['hero__photo--Polaroid']}`}
-            >
+            <div className={`${styles.hero__photo} ${styles['hero__photo--Polaroid']}`}>
               <img src={myPhoto} alt="my photo" loading="lazy" />
               <p className={styles.caption}>Мех Владислав Игоревич</p>
             </div>
 
             <div className={styles.hero__yearBlock}>
-              <div className={styles.hero__yearText}>1995s - 2005s</div>
+              <h1 className={styles.hero__yearText}>1995s - 2005s</h1>
             </div>
 
             <div className={`${styles.hero__textBlock} ${styles.hero__box}`}>
               <motion.div style={{ x: xText }} className={styles.hero__textSlides}>
-                <div className={`${styles.hero__textSlide} ${styles.hero__box}`}>
-                  Что мне понравилось в те годы (A)
-                </div>
-                <div className={`${styles.hero__textSlide} ${styles.hero__box}`}>
-                  Что мне понравилось в те годы (B)
-                </div>
-                <div className={`${styles.hero__textSlide} ${styles.hero__box}`}>
-                  Что мне понравилось в те годы (C)
-                </div>
-                <div className={`${styles.hero__textSlide} ${styles.hero__box}`}>
-                  Что мне понравилось в те годы (D)
+                <div className={styles.hero__textSlide}>
+                  <h2 className={styles.hero__title}>Сокровища</h2>
+                  <div className={styles.hero__textContent}>
+                    <img
+                      src={mePlayingSega}
+                      alt="mePlayingSega"
+                      loading="lazy"
+                      className={styles.hero__image}
+                    />
+                    {/* <p className={styles.hero__text}>
+                      Это, наверное, <span>звучит странно</span>… <br />
+                      Но самые тёплые воспоминания моего детства — не про походы в парк, не про игры
+                      во дворе.
+                      <br />
+                      <br />
+                      Они — про <span>звук загрузки старенького модема</span>. Про{' '}
+                      <span>пиксели в Paint</span> и надписи <span>«онлайн» в “аське”</span>. Про
+                      то, как я бережно держал в руках <span>тамагочи</span>, будто это живое
+                      существо.
+                      <br />
+                      <br />У нас не было <span>дорогих игрушек</span> — но каждая кнопка на пульте,
+                      каждый девайс, который появлялся в доме, был как <span>сокровище</span>. Я мог
+                      часами <span>изучать</span> его, находить <span>скрытые функции</span>, просто{' '}
+                      <span>чувствовать</span> его.
+                      <br />
+                      <br />И с тех пор <span>ничего не изменилось</span>. Мне всё ещё важно{' '}
+                      <span>понимать, как устроено</span> то, что я держу в руках. Всё ещё{' '}
+                      <span>тянет исследовать</span>. Всё ещё <span>люблю технику</span> — может,
+                      даже больше, чем тогда.
+                      <br />
+                      <br />
+                      Просто теперь я <span>не просто нажимаю на кнопки</span> —
+                      <span> я создаю их</span>.
+                    </p> */}
+                    <p className={styles.hero__text}>
+                      Это, наверное, <span>звучит странно</span>… <br />
+                      Но самые тёплые воспоминания моего детства — не про походы в парк, не про игры
+                      во дворе.
+                      <br />
+                      <img src={sega} alt="Sega" className={styles.hero__inlineImage} />
+                      <br />
+                      Они — про <span>звук загрузки старенького модема</span>. Про
+                      <span>пиксели в Paint</span> и надписи <span>«онлайн» в “аське”</span>. Про
+                      то, как я бережно держал в руках
+                      <span>тамагочи</span>, будто это живое существо.
+                      <br />
+                      <img src={tetris} alt="Tetris" className={styles.hero__inlineImage} />
+                      <br />У нас не было <span>дорогих игрушек</span> — но каждая кнопка на пульте,
+                      каждый девайс, который появлялся в доме, был как
+                      <span>сокровище</span>. Я мог часами <span>изучать</span> его, находить{' '}
+                      <span>скрытые функции</span>, просто <span>чувствовать</span> его.
+                      <br />
+                      <img src={ps1} alt="PS1" className={styles.hero__inlineImage} />
+                      <br />И с тех пор <span>ничего не изменилось</span>. Мне всё ещё важно{' '}
+                      <span>понимать, как устроено</span> то, что я держу в руках. Всё ещё
+                      <span>тянет исследовать</span>. Всё ещё <span>люблю технику</span> — может,
+                      даже больше, чем тогда.
+                      <br />
+                      <br />
+                      Просто теперь я <span>не просто нажимаю на кнопки</span> —{' '}
+                      <span>я создаю их</span>.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </div>
 
-            <div className={`${styles.hero__skillsBlock}`}>
+            <div className={`${styles.hero__skillsBlock} `}>
               <motion.div style={{ x: xSkills }} className={styles.hero__skillsSlides}>
                 {slides.map((group, groupIndex) => (
                   <div
