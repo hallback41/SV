@@ -1,76 +1,92 @@
 @use '../../styles/helpers' as *;
 
-$bg: var(--color-bg-main); // окно
+// ====== ПАРАМЕТРЫ ТЕМЫ ======
+$bg: var(--color-bg-main);
 $bg-light: #e9e7e3;
 $panel: #efefef;
-$shadow: #808080; // тёмный бордёр
-$hilite: #ffffff; // светлый бордёр
+$shadow: #808080;
+$hilite: #ffffff;
 $mid: #c0c0c0;
 $line: #9b9b9b;
-$blue: #0033cc; // синие ссылки
+$blue: #0033cc;
 $green: #009933;
 $text: #000;
 
+// БАЗА ДИЗАЙНА: 12px — оригинальный кегль ICQ
+$base-font: 12;
+
+// Компонентная единица:  em от базового кегля внутри компонента
+@function em12($px) {
+  @return ($px / $base-font) * 1em;
+}
+
 @mixin bevel-out {
-  border-top: rem(2) solid $hilite;
-  border-left: rem(2) solid $hilite;
-  border-right: rem(2) solid $shadow;
-  border-bottom: rem(2) solid $shadow;
+  border-top: em12(2) solid $hilite;
+  border-left: em12(2) solid $hilite;
+  border-right: em12(2) solid $shadow;
+  border-bottom: em12(2) solid $shadow;
   background: $panel;
 }
 
 @mixin bevel-in {
-  border-top: rem(2) solid $shadow;
-  border-left: rem(2) solid $shadow;
-  border-right: rem(2) solid $hilite;
-  border-bottom: rem(2) solid $hilite;
+  border-top: em12(2) solid $shadow;
+  border-left: em12(2) solid $shadow;
+  border-right: em12(2) solid $hilite;
+  border-bottom: em12(2) solid $hilite;
   background: $panel;
 }
 
+// ====== КОРНЕВОЙ КОНТЕЙНЕР (fluid) ======
 .icq2001b {
-  width: rem(324);
+  // масштабируем ВЕСЬ интерфейс за счёт кегля внутри компонента
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: clamp(10px, 1.2vw, 14px);
+
+  // "резиновая" ширина окна в коридоре ~280–420px + 100% по контейнеру
+  width: clamp(em12(280), 100%, em12(420));
+  max-width: 100%;
+
   background: $bg;
   color: $text;
-  font:
-    rem(12) / 1.2 Tahoma,
-    Verdana,
-    sans-serif;
-  box-shadow: 0 0 0 rem(1) #000 inset;
+
+  // тонкая внутренняя рамка (тоже «резиновая» по масштабу компонента)
+  box-shadow: 0 0 0 em12(1) #000 inset;
 }
 
-/* Titlebar */
+// ====== TITLEBAR ======
 .titlebar {
-  height: rem(22);
+  height: em12(22);
   background: linear-gradient(#0a4ba4, #043d86);
   color: #fff;
   display: grid;
-  grid-template-columns: rem(20) 1fr auto;
+  grid-template-columns: em12(20) 1fr auto;
   align-items: center;
-  padding: 0 rem(2);
-  box-shadow: 0 rem(1) 0 #000 inset;
+  padding: 0 em12(2);
+  box-shadow: 0 em12(1) 0 #000 inset;
 
   &__appicon {
-    width: rem(16);
-    height: rem(16);
-    margin-left: rem(2);
+    width: em12(16);
+    height: em12(16);
+    margin-left: em12(2);
     background: url('@/assets/icq/icons/icq_flower_30.png') no-repeat center/contain;
   }
   &__title {
     font-weight: 700;
-    letter-spacing: rem(0.3);
-    margin-left: rem(4);
+    letter-spacing: em12(0.3);
+    margin-left: em12(4);
   }
   &__controls {
     display: grid;
     grid-auto-flow: column;
-    gap: rem(2);
+    gap: em12(2);
   }
 
   .wbtn {
-    width: rem(16);
-    height: rem(14);
+    width: em12(16);
+    height: em12(14);
     @include bevel-out;
     background: #c3c3c3;
+
     &--close {
       background-image: url('@/assets/icq/icons/close_10.png');
       background-repeat: no-repeat;
@@ -92,21 +108,22 @@ $text: #000;
   }
 }
 
-/* Header promo */
+// ====== HEADER PROMO ======
 .header {
-  padding: rem(6);
-  border-bottom: rem(1) solid $line;
+  padding: em12(6);
+  border-bottom: em12(1) solid $line;
   background: $bg-light;
 }
 .promo {
   @include bevel-out;
   display: flex;
   align-items: center;
-  gap: rem(6);
-  padding: rem(6);
+  gap: em12(6);
+  padding: em12(6);
+
   &__logo {
-    width: rem(30);
-    height: rem(30);
+    width: em12(30);
+    height: em12(30);
     background: url('@/assets/icq/icons/icq_flower_30.png') no-repeat center/contain;
   }
   &__text {
@@ -119,44 +136,44 @@ $text: #000;
   display: block;
   text-align: center;
   color: $blue;
-  margin-top: rem(4);
+  margin-top: em12(4);
   text-decoration: underline;
 }
 
-/* Layout body */
+// ====== ОСНОВНАЯ ВНУТРЕННЯЯ СЕТКА ======
 .body {
   display: grid;
-  grid-template-columns: 1fr rem(36);
+  grid-template-columns: 1fr em12(36);
 }
 
-/* Sidebar */
+// ====== БОКОВАЯ ПАНЕЛЬ ======
 .sidebar {
   background: repeating-linear-gradient(
     90deg,
     #e6e6e6,
-    #e6e6e6 rem(1),
-    #f6f6f6 rem(1),
-    #f6f6f6 rem(3)
+    #e6e6e6 em12(1),
+    #f6f6f6 em12(1),
+    #f6f6f6 em12(3)
   );
-  border-left: rem(1) solid $shadow;
+  border-left: em12(1) solid $shadow;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: rem(4) rem(3);
-  gap: rem(6);
+  padding: em12(4) em12(3);
+  gap: em12(6);
 
   &__label {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     font-weight: 700;
     color: #0079c1;
-    letter-spacing: rem(0.5);
+    letter-spacing: em12(0.5);
   }
 }
 
 .sicon {
-  width: rem(26);
-  height: rem(26);
+  width: em12(26);
+  height: em12(26);
   @include bevel-out;
   background: #ddd;
   cursor: pointer;
@@ -166,60 +183,62 @@ $text: #000;
   &:active {
     @include bevel-in;
   }
+
   &--user {
     background-image: url('@/assets/icq/icons/side_user.png');
-    background-size: rem(16) rem(16);
+    background-size: em12(16) em12(16);
     background-repeat: no-repeat;
     background-position: center;
   }
   &--heart {
     background-image: url('@/assets/icq/icons/side_heart.png');
-    background-size: rem(16) rem(16);
+    background-size: em12(16) em12(16);
     background-repeat: no-repeat;
     background-position: center;
   }
   &--dove {
     background-image: url('@/assets/icq/icons/side_dove.png');
-    background-size: rem(16) rem(16);
+    background-size: em12(16) em12(16);
     background-repeat: no-repeat;
     background-position: center;
   }
   &--disk {
     background-image: url('@/assets/icq/icons/side_disk.png');
-    background-size: rem(16) rem(16);
+    background-size: em12(16) em12(16);
     background-repeat: no-repeat;
     background-position: center;
   }
   &--netscape {
     background-image: url('@/assets/icq/icons/side_netscape.png');
-    background-size: rem(16) rem(16);
+    background-size: em12(16) em12(16);
     background-repeat: no-repeat;
     background-position: center;
   }
 }
 
-/* List and head */
+// ====== ЛЕВАЯ КОЛОНКА: список ======
 .listWrap {
-  padding: rem(6);
+  padding: em12(6);
 }
 
 .listHead {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: rem(6);
-  margin: rem(2) 0 rem(4);
+  gap: em12(6);
+  margin: em12(2) 0 em12(4);
 
   &__label {
     font-weight: 700;
   }
   &__line {
-    height: rem(1);
+    height: em12(1);
     background: $line;
   }
+
   &__btn {
-    width: rem(22);
-    height: rem(18);
+    width: em12(22);
+    height: em12(18);
     @include bevel-out;
     background: #dcdcdc;
     background-image: url('@/assets/icq/icons/caret_up.png');
@@ -228,45 +247,51 @@ $text: #000;
   }
 }
 
-/* Contacts area + fake scrollbar like screenshot */
 .contactsArea {
   display: grid;
-  grid-template-columns: 1fr rem(18);
-  gap: rem(6);
+  grid-template-columns: 1fr em12(18);
+  gap: em12(6);
 }
 .contacts {
   @include bevel-in;
   background: #fff;
-  padding: rem(6) rem(6) rem(6) rem(4);
-  height: rem(178);
+  padding: em12(6) em12(6) em12(6) em12(4);
+
+  // высоту делаем «резиновой» по высоте экрана, но с пределами
+  height: clamp(em12(120), 28vh, em12(220));
   overflow: hidden;
+
   li + li {
-    margin-top: rem(4);
+    margin-top: em12(4);
   }
 }
+
 .contact {
   display: grid;
-  grid-template-columns: rem(18) 1fr auto;
+  grid-template-columns: em12(18) 1fr auto;
   align-items: center;
-  column-gap: rem(6);
+  column-gap: em12(6);
+
   &__name {
     color: $blue;
     text-decoration: underline;
   }
   &__addons {
     display: flex;
-    gap: rem(6);
+    gap: em12(6);
   }
   &:hover {
     background: #cce5ff;
   }
 }
+
 .icon {
-  width: rem(16);
-  height: rem(16);
+  width: em12(16);
+  height: em12(16);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
   &--na {
     background-image: url('@/assets/icq/icons/status_na.png');
   }
@@ -277,15 +302,17 @@ $text: #000;
     background-image: url('@/assets/icq/icons/status_file.png');
   }
   &--flower-gray {
-    background-image: url('/* flower_gray.png */');
+    background-image: url('@/assets/icq/icons/flower_gray.png');
   }
 }
+
 .addon {
-  width: rem(14);
-  height: rem(14);
+  width: em12(14);
+  height: em12(14);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
   &--phone {
     background-image: url('@/assets/icq/icons/add_phone.png');
   }
@@ -296,9 +323,10 @@ $text: #000;
 
 .scrollbar {
   display: grid;
-  grid-template-rows: rem(18) 1fr rem(18);
+  grid-template-rows: em12(18) 1fr em12(18);
   align-items: center;
   justify-items: stretch;
+
   &__btn {
     @include bevel-out;
     background: #dcdcdc;
@@ -311,28 +339,30 @@ $text: #000;
   &__btn--down {
     background-image: url('@/assets/icq/icons/caret_down.png');
   }
+
   &__track {
     @include bevel-in;
     background: #eee;
-    padding: rem(2);
+    padding: em12(2);
     display: flex;
   }
   &__thumb {
     background: #b0b0b0;
-    border: rem(1) solid #7a7a7a;
+    border: em12(1) solid #7a7a7a;
     width: 100%;
-    height: rem(40);
+    height: em12(40);
     margin: auto 0;
   }
 }
 
-/* Buttons and rows */
+// ====== КНОПКИ ======
 .btn {
   @include bevel-out;
-  padding: rem(4) rem(6);
+  padding: em12(4) em12(6);
   background: #dcdcdc;
   cursor: pointer;
   text-align: left;
+
   &:hover {
     filter: brightness(1.03);
   }
@@ -342,18 +372,19 @@ $text: #000;
 }
 .btn--wide {
   width: 100%;
-  margin-top: rem(4);
+  margin-top: em12(4);
 }
+
 .btnRow {
   display: grid;
-  grid-template-columns: 1fr rem(22) rem(22);
-  gap: rem(4);
-  margin-top: rem(4);
+  grid-template-columns: 1fr em12(22) em12(22);
+  gap: em12(4);
+  margin-top: em12(4);
 }
 .btn--square {
-  height: rem(24);
-  margin-top: rem(5);
-  background-image: url('@/assets/icq/icons/triangle.png'), none;
+  height: em12(24);
+  margin-top: em12(5);
+  background-image: url('@/assets/icq/icons/triangle.png');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -362,50 +393,50 @@ $text: #000;
   @include bevel-out;
   display: flex;
   align-items: center;
-  gap: rem(6);
-  padding: rem(4) rem(6);
-  margin-top: rem(6);
+  gap: em12(6);
+  padding: em12(4) em12(6);
+  margin-top: em12(6);
   background: #f4f4f4;
 }
 
 .btn--xl {
   @include bevel-out;
   width: 100%;
-  margin-top: rem(6);
+  margin-top: em12(6);
   font-weight: 700;
   text-align: center;
 }
 
-/* bottom pair buttons */
 .bottomBtns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: rem(6);
-  margin-top: rem(6);
+  gap: em12(6);
+  margin-top: em12(6);
 }
 
-/* Status + input */
+// ====== STATUSBAR + INPUT ======
 .statusbar {
   @include bevel-out;
-  margin: rem(6) 0 rem(6);
-  padding: rem(4);
+  margin: em12(6) 0 em12(6);
+  padding: em12(4);
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  gap: rem(6);
+  gap: em12(6);
   background: #ecebe7;
 }
 .statusbar__left {
   display: flex;
   align-items: center;
-  gap: rem(6);
+  gap: em12(6);
 }
 .iconSmall {
-  width: rem(16);
-  height: rem(16);
+  width: em12(16);
+  height: em12(16);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
   &--flower {
     background-image: url('@/assets/icq/icons/flower_16_green.png');
   }
@@ -413,22 +444,22 @@ $text: #000;
 .statusbar__right {
   display: flex;
   align-items: center;
-  gap: rem(4);
+  gap: em12(4);
 }
 .input {
   @include bevel-in;
-  width: rem(160);
-  height: rem(22);
-  padding: 0 rem(6);
+  width: clamp(em12(120), 50%, em12(200));
+  height: em12(22);
+  padding: 0 em12(6);
 }
 .go {
   @include bevel-out;
-  padding: 0 rem(6);
-  height: rem(22);
+  padding: 0 em12(6);
+  height: em12(22);
   font-weight: 700;
 }
 
-/* Ссылки */
+// ====== LINKS ======
 a {
   color: $blue;
   text-decoration: underline;
