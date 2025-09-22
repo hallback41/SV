@@ -78,31 +78,123 @@ const Hero = () => {
                       loading="lazy"
                       className={styles.hero__image}
                     />
-                    {/* <p className={styles.hero__text}>
+                    <p className={styles.hero__text}>
                       Это, наверное, <span>звучит странно</span>… <br />
                       Но самые тёплые воспоминания моего детства — не про походы в парк, не про игры
                       во дворе.
                       <br />
+                      <img src={sega} alt="Sega" className={styles.hero__inlineImage} />
                       <br />
-                      Они — про <span>звук загрузки старенького модема</span>. Про{' '}
+                      Они — про <span>звук загрузки старенького модема</span>. Про
                       <span>пиксели в Paint</span> и надписи <span>«онлайн» в “аське”</span>. Про
-                      то, как я бережно держал в руках <span>тамагочи</span>, будто это живое
-                      существо.
+                      то, как я бережно держал в руках
+                      <span>тамагочи</span>, будто это живое существо.
                       <br />
+                      <img src={tetris} alt="Tetris" className={styles.hero__inlineImage} />
                       <br />У нас не было <span>дорогих игрушек</span> — но каждая кнопка на пульте,
-                      каждый девайс, который появлялся в доме, был как <span>сокровище</span>. Я мог
-                      часами <span>изучать</span> его, находить <span>скрытые функции</span>, просто{' '}
-                      <span>чувствовать</span> его.
+                      каждый девайс, который появлялся в доме, был как
+                      <span>сокровище</span>. Я мог часами <span>изучать</span> его, находить{' '}
+                      <span>скрытые функции</span>, просто <span>чувствовать</span> его.
                       <br />
+                      <img src={ps1} alt="PS1" className={styles.hero__inlineImage} />
                       <br />И с тех пор <span>ничего не изменилось</span>. Мне всё ещё важно{' '}
-                      <span>понимать, как устроено</span> то, что я держу в руках. Всё ещё{' '}
+                      <span>понимать, как устроено</span> то, что я держу в руках. Всё ещё
                       <span>тянет исследовать</span>. Всё ещё <span>люблю технику</span> — может,
                       даже больше, чем тогда.
                       <br />
                       <br />
-                      Просто теперь я <span>не просто нажимаю на кнопки</span> —
-                      <span> я создаю их</span>.
-                    </p> */}
+                      Просто теперь я <span>не просто нажимаю на кнопки</span> —{' '}
+                      <span>я создаю их</span>.
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.hero__textSlide}>
+                  <h2 className={styles.hero__title}>Сокровища</h2>
+                  <div className={styles.hero__textContent}>
+                    <img
+                      src={mePlayingSega}
+                      alt="mePlayingSega"
+                      loading="lazy"
+                      className={styles.hero__image}
+                    />
+                    <p className={styles.hero__text}>
+                      Это, наверное, <span>звучит странно</span>… <br />
+                      Но самые тёплые воспоминания моего детства — не про походы в парк, не про игры
+                      во дворе.
+                      <br />
+                      <img src={sega} alt="Sega" className={styles.hero__inlineImage} />
+                      <br />
+                      Они — про <span>звук загрузки старенького модема</span>. Про
+                      <span>пиксели в Paint</span> и надписи <span>«онлайн» в “аське”</span>. Про
+                      то, как я бережно держал в руках
+                      <span>тамагочи</span>, будто это живое существо.
+                      <br />
+                      <img src={tetris} alt="Tetris" className={styles.hero__inlineImage} />
+                      <br />У нас не было <span>дорогих игрушек</span> — но каждая кнопка на пульте,
+                      каждый девайс, который появлялся в доме, был как
+                      <span>сокровище</span>. Я мог часами <span>изучать</span> его, находить{' '}
+                      <span>скрытые функции</span>, просто <span>чувствовать</span> его.
+                      <br />
+                      <img src={ps1} alt="PS1" className={styles.hero__inlineImage} />
+                      <br />И с тех пор <span>ничего не изменилось</span>. Мне всё ещё важно{' '}
+                      <span>понимать, как устроено</span> то, что я держу в руках. Всё ещё
+                      <span>тянет исследовать</span>. Всё ещё <span>люблю технику</span> — может,
+                      даже больше, чем тогда.
+                      <br />
+                      <br />
+                      Просто теперь я <span>не просто нажимаю на кнопки</span> —{' '}
+                      <span>я создаю их</span>.
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.hero__textSlide}>
+                  <h2 className={styles.hero__title}>Сокровища</h2>
+                  <div className={styles.hero__textContent}>
+                    <img
+                      src={mePlayingSega}
+                      alt="mePlayingSega"
+                      loading="lazy"
+                      className={styles.hero__image}
+                    />
+                    <p className={styles.hero__text}>
+                      Это, наверное, <span>звучит странно</span>… <br />
+                      Но самые тёплые воспоминания моего детства — не про походы в парк, не про игры
+                      во дворе.
+                      <br />
+                      <img src={sega} alt="Sega" className={styles.hero__inlineImage} />
+                      <br />
+                      Они — про <span>звук загрузки старенького модема</span>. Про
+                      <span>пиксели в Paint</span> и надписи <span>«онлайн» в “аське”</span>. Про
+                      то, как я бережно держал в руках
+                      <span>тамагочи</span>, будто это живое существо.
+                      <br />
+                      <img src={tetris} alt="Tetris" className={styles.hero__inlineImage} />
+                      <br />У нас не было <span>дорогих игрушек</span> — но каждая кнопка на пульте,
+                      каждый девайс, который появлялся в доме, был как
+                      <span>сокровище</span>. Я мог часами <span>изучать</span> его, находить{' '}
+                      <span>скрытые функции</span>, просто <span>чувствовать</span> его.
+                      <br />
+                      <img src={ps1} alt="PS1" className={styles.hero__inlineImage} />
+                      <br />И с тех пор <span>ничего не изменилось</span>. Мне всё ещё важно{' '}
+                      <span>понимать, как устроено</span> то, что я держу в руках. Всё ещё
+                      <span>тянет исследовать</span>. Всё ещё <span>люблю технику</span> — может,
+                      даже больше, чем тогда.
+                      <br />
+                      <br />
+                      Просто теперь я <span>не просто нажимаю на кнопки</span> —{' '}
+                      <span>я создаю их</span>.
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.hero__textSlide}>
+                  <h2 className={styles.hero__title}>Сокровища</h2>
+                  <div className={styles.hero__textContent}>
+                    <img
+                      src={mePlayingSega}
+                      alt="mePlayingSega"
+                      loading="lazy"
+                      className={styles.hero__image}
+                    />
                     <p className={styles.hero__text}>
                       Это, наверное, <span>звучит странно</span>… <br />
                       Но самые тёплые воспоминания моего детства — не про походы в парк, не про игры
