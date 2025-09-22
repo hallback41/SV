@@ -2,7 +2,6 @@ import styles from './_Hero.module.scss'
 import myPhoto from '@/assets/images/hero/me.webp'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Header from '../Header/Header'
 import SkillSlideItem from './SkillSlideItem'
 import pc1990 from '@/assets/gifs/PC1990.gif'
 import cd from '@/assets/gifs/cd.gif'
@@ -20,6 +19,7 @@ import mePlayingSega from '@/assets/images/hero/mePlayingSega.png'
 import sega from '@/assets/images/hero/sega.png'
 import tetris from '@/assets/images/hero/tetris.png'
 import ps1 from '@/assets/images/hero/ps1.png'
+import Marquee from '@/components/Marquee'
 
 const Hero = () => {
   const slides = [
@@ -55,7 +55,8 @@ const Hero = () => {
   return (
     <section ref={sectionRef} className={styles.heroWrapper}>
       <div className={styles.heroSticky}>
-        <Header />
+        <Marquee i18nKey="header.marquee" emojiCount={5} />
+
         <div className={`${styles.hero} container`}>
           <div className={styles.hero__grid}>
             <div className={`${styles.hero__photo} ${styles['hero__photo--Polaroid']}`}>
@@ -249,9 +250,9 @@ const Hero = () => {
               </motion.div>
             </div>
 
-            <div className={`${styles.hero__pop} ${styles.hero__box} ${styles['hero__pop--1']}`}>
-              Поп-культура
-            </div>
+            <div
+              className={`${styles.hero__pop} ${styles.hero__box} ${styles['hero__pop--1']}`}
+            ></div>
             <div className={`${styles.hero__pop} ${styles.hero__box} ${styles['hero__pop--2']}`}>
               Поп-культура
             </div>
@@ -263,6 +264,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        <Marquee i18nKey="footer.marquee" emojiCount={3} />
       </div>
     </section>
   )
