@@ -1,5 +1,8 @@
 {
   "header": {
     "marquee": "<0>Hi!</0> You've landed on my CV — I’ve poured in all my <1>soul</1>, <2>creativity</2>, and <3>skills</3>. I hope you feel the same nostalgia and emotions I felt falling in love with the internet over and over again <4>^_^</4>"
+  },
+  "footer": {
+    "marquee": "<0>Hi!</0> You've landed on my CV — I’ve poured in all my <1>soul</1>, <2>creativity</2>, and <3>skills</3>. I hope you feel the same nostalgia and emotions I felt falling in love with the internet over and over again <4>^_^</4>"
   }
 }

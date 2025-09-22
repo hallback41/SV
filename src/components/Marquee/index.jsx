@@ -1,5 +1,5 @@
 import { Trans } from 'react-i18next'
-import styles from './Marquee.module.scss'
+import styles from './_Marquee.module.scss'
 
 const Marquee = ({ i18nKey, emojiCount = 5 }) => {
   return (
