@@ -83,8 +83,12 @@
         padding: 18px 18px 36px;
       }
 
+      img {
+        width: 100%;
+      }
+
       .caption {
-        @include fluid-text(22, 12);
+        @include fluid-text(22, 15);
         margin-top: 8px;
         color: #333;
       }
@@ -168,7 +172,7 @@
     scroll-snap-align: start; // <<< добавь это
 
     @include mobile {
-      padding: rem(8);
+      padding: rem(22);
     }
   }
 
@@ -201,12 +205,15 @@
     @include tablet {
       width: rem(160);
     }
+    @include mobile {
+      width: rem(120);
+    }
   }
 
   &__text {
     color: #333;
     line-height: 1.6;
-    @include fluid-text(16, 8);
+    @include fluid-text(22, 14);
 
     span {
       color: var(--color-bg-highlight);
@@ -214,7 +221,7 @@
     }
 
     @include mobile {
-      font-size: rem(12);
+      @include fluid-text(22, 13);
     }
   }
 
