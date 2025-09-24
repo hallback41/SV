@@ -6,7 +6,7 @@ function App() {
   return (
     <ThemeProvider theme="90s">
       <Hero />
-      <ICQWidget />
+      {/* <ICQWidget /> */}
     </ThemeProvider>
   )
 }

@@ -13,11 +13,15 @@
   padding: 0;
   overflow: hidden;
   background-color: var(--color-bg-panel);
-  border: rem(8) double var(--color-text-secondary);
+  border: rem(8) double var(--border-color);
   white-space: nowrap;
   font-family: var(--font-family-main);
   font-size: rem(22);
   color: var(--color-pixel-yellow);
+
+  @include mobile {
+    font-size: rem(16);
+  }
 }
 
 .marquee {

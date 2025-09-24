@@ -20,6 +20,7 @@ import sega from '@/assets/images/hero/sega.png'
 import tetris from '@/assets/images/hero/tetris.png'
 import ps1 from '@/assets/images/hero/ps1.png'
 import Marquee from '@/components/Marquee'
+import { useMediaQuery } from 'react-responsive'
 
 const Hero = () => {
   const slides = [
@@ -40,7 +41,7 @@ const Hero = () => {
       { img: mortal, alt: 'mortal', text: 'Учил комбухи в Мортале' },
     ],
   ]
-
+  const isMobile = useMediaQuery({ maxWidth: 768 })
   const sectionRef = useRef(null)
 
   // Скролл относительно всей секции
@@ -50,7 +51,7 @@ const Hero = () => {
   })
 
   const xText = useTransform(scrollYProgress, [0, 1], ['0%', '-304.6%'])
-  const xSkills = useTransform(scrollYProgress, [0, 1], ['0%', '-105%'])
+  const xSkills = useTransform(scrollYProgress, [0, 1], ['0%', '-100%'])
 
   return (
     <section ref={sectionRef} className={styles.heroWrapper}>
@@ -65,11 +66,11 @@ const Hero = () => {
             </div>
 
             <div className={styles.hero__yearBlock}>
-              <h1 className={styles.hero__yearText}>1995s - 2005s</h1>
+              <h1 className={styles.hero__yearText}>1993s - 2007s</h1>
             </div>
 
             <div className={`${styles.hero__textBlock} ${styles.hero__box}`}>
-              <motion.div style={{ x: xText }} className={styles.hero__textSlides}>
+              <motion.div style={isMobile ? {} : { x: xText }} className={styles.hero__textSlides}>
                 <div className={styles.hero__textSlide}>
                   <h2 className={styles.hero__title}>Сокровища</h2>
                   <div className={styles.hero__textContent}>
@@ -230,7 +231,10 @@ const Hero = () => {
             </div>
 
             <div className={`${styles.hero__skillsBlock} `}>
-              <motion.div style={{ x: xSkills }} className={styles.hero__skillsSlides}>
+              <motion.div
+                style={isMobile ? {} : { x: xSkills }}
+                className={styles.hero__skillsSlides}
+              >
                 {slides.map((group, groupIndex) => (
                   <div
                     key={groupIndex}
@@ -250,9 +254,10 @@ const Hero = () => {
               </motion.div>
             </div>
 
-            <div
-              className={`${styles.hero__pop} ${styles.hero__box} ${styles['hero__pop--1']}`}
-            ></div>
+            <div className={`${styles.hero__pop} ${styles.hero__box} ${styles['hero__pop--1']}`}>
+              {' '}
+              Поп-культура
+            </div>
             <div className={`${styles.hero__pop} ${styles.hero__box} ${styles['hero__pop--2']}`}>
               Поп-культура
             </div>

@@ -1,7 +1,7 @@
 @use '../../styles/helpers' as *;
 
 // ====== ПАРАМЕТРЫ ТЕМЫ ======
-$bg: var(--color-bg-main);
+$bg: #e9e7e3;
 $bg-light: #e9e7e3;
 $panel: #efefef;
 $shadow: #808080;
@@ -38,12 +38,11 @@ $base-font: 12;
 
 // ====== КОРНЕВОЙ КОНТЕЙНЕР (fluid) ======
 .icq2001b {
-  // масштабируем ВЕСЬ интерфейс за счёт кегля внутри компонента
   font-family: Tahoma, Verdana, sans-serif;
   font-size: clamp(10px, 1.2vw, 14px);
 
   // "резиновая" ширина окна в коридоре ~280–420px + 100% по контейнеру
-  width: clamp(em12(280), 100%, em12(420));
+  width: clamp(em12(220), 100%, em12(310));
   max-width: 100%;
 
   background: $bg;
@@ -76,14 +75,13 @@ $base-font: 12;
     margin-left: em12(4);
   }
   &__controls {
+    height: em12(12);
     display: grid;
     grid-auto-flow: column;
     gap: em12(2);
   }
 
   .wbtn {
-    width: em12(16);
-    height: em12(14);
     @include bevel-out;
     background: #c3c3c3;
 
@@ -286,8 +284,8 @@ $base-font: 12;
 }
 
 .icon {
-  width: em12(16);
-  height: em12(16);
+  width: em12(26);
+  height: em12(26);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -302,7 +300,7 @@ $base-font: 12;
     background-image: url('@/assets/icq/icons/status_file.png');
   }
   &--flower-gray {
-    background-image: url('@/assets/icq/icons/flower_gray.png');
+    background-image: url('@/assets/icq/icons/status_flower.png');
   }
 }
 

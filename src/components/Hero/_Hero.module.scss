@@ -9,12 +9,20 @@
   &Wrapper {
     height: 200vh; // важно! чтобы можно было прокрутить
     position: relative;
+
+    @include mobile {
+      height: auto; // <— секция будет ровно по контенту
+      min-height: 100vh; // (по желанию, чтобы было хотя бы на экран)
+    }
   }
 
   &Sticky {
     position: sticky;
     top: 0;
     overflow: hidden;
+    @include mobile {
+      overflow-x: visible; // позволяем дочернему элементу показывать свой скролл
+    }
   }
 
   &__box {
@@ -23,7 +31,7 @@
     font-family: var(--font-family-main);
     padding: var(--padding);
     transition: var(--transition);
-    border: rem(8) double var(--color-text-secondary);
+    border: rem(8) double var(--border-color);
     z-index: 1;
   }
 
@@ -38,6 +46,11 @@
       'skills pop3 pop4';
     grid-template-columns: 1fr 1fr 2fr;
     gap: rem(14);
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__photo {
@@ -49,6 +62,10 @@
     padding: 0;
     border-color: var(--color-bg-accent-button);
 
+    @include mobile {
+      margin-inline: auto;
+    }
+
     &--Polaroid {
       background: white;
       padding: 12px 12px 30px; // нижний отступ шире
@@ -58,9 +75,17 @@
       text-align: center;
       display: inline-block;
 
+      @include tablet {
+        padding: 6px 6px 15px; // нижний отступ шире
+      }
+
+      @include mobile {
+        padding: 18px 18px 36px;
+      }
+
       .caption {
+        @include fluid-text(22, 12);
         margin-top: 8px;
-        font-size: rem(16);
         color: #333;
       }
     }
@@ -72,10 +97,15 @@
     display: flex;
     align-items: center;
     color: var(--color-bg-highlight);
+
+    @include mobile {
+      justify-content: center;
+      margin-block: rem(15);
+    }
   }
 
   &__yearText {
-    @include fluid-text(32, 17);
+    @include fluid-text(32, 22);
   }
 
   &__textBlock {
@@ -84,6 +114,10 @@
     position: relative;
     padding: 0;
     width: 100%;
+
+    @include mobile {
+      overflow: visible; // чтобы полоса/оверлей скролла не пряталась
+    }
   }
 
   &__textSlides {
@@ -91,6 +125,16 @@
     width: 100%;
     will-change: transform;
     gap: rem(14);
+    flex-wrap: nowrap; // важно
+
+    @include mobile {
+      overflow-x: auto; // включаем горизонтальный скролл
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory; // прилипания по слайдам
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      padding-bottom: rem(6); // чуть места под оверлей скролла
+    }
   }
 
   &__inlineImage {
@@ -101,20 +145,42 @@
     float: left; // или left для другого эффекта
     shape-outside: margin-box;
     border-radius: rem(3);
+
+    @include laptop {
+      width: rem(78); // или 32–48 в зависимости от масштаба
+    }
+
+    @include tablet {
+      width: rem(58); // или 32–48 в зависимости от масштаба
+    }
+
+    @include mobile {
+      width: rem(55);
+    }
   }
 
   &__textSlide {
+    flex: 0 0 100%; // один слайд = ширина экрана
     width: 100%;
     flex-shrink: 0;
     padding: rem(32);
     box-sizing: border-box;
+    scroll-snap-align: start; // <<< добавь это
+
+    @include mobile {
+      padding: rem(8);
+    }
   }
 
   &__title {
-    font-size: rem(36);
+    @include fluid-text(32, 22);
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: rem(24);
+
+    @include mobile {
+      text-align: center;
+    }
   }
 
   &__textContent {
@@ -131,15 +197,24 @@
     border-radius: rem(4);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transform: rotate(3deg);
+
+    @include tablet {
+      width: rem(160);
+    }
   }
 
   &__text {
     color: #333;
     line-height: 1.6;
-    @include fluid-text(16, 12);
+    @include fluid-text(16, 8);
+
     span {
       color: var(--color-bg-highlight);
       font-weight: bold;
+    }
+
+    @include mobile {
+      font-size: rem(12);
     }
   }
 
@@ -152,40 +227,43 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+
+    @include mobile {
+      overflow: visible; // даём дочернему блоку скроллиться
+    }
   }
 
   &__skillsSlides {
     height: 100%;
     display: flex;
-    width: 100%;
     will-change: transform;
-    gap: rem(14);
+    gap: 0; // <— важно для десктопа
+
+    @include mobile {
+      gap: rem(14);
+      overflow-x: auto; // включаем горизонтальный скролл
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain; // (лучше добавить, как у текста)
+      padding-bottom: rem(6);
+    }
   }
 
   &__skillSlide {
+    flex: 0 0 100%; // каждый слайд = ширина экрана
     height: 100%;
-    width: 100%;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    background-color: var(--color-bg-main);
+    background-color: var(--color-bg-highlight);
     gap: rem(14);
     flex-shrink: 0;
     padding: 0;
     box-sizing: border-box;
-    z-index: -1;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 50%;
-      width: 100%;
-      background-color: var(--color-bg-highlight);
-      z-index: -1;
-    }
+    scroll-snap-align: start;
   }
 
   &__pop--1 {
