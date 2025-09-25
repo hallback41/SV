@@ -1,4 +1,5 @@
-@use '../../styles/helpers' as *;
+@use '../../../styles/helpers' as *;
+@use 'sass:math';
 
 // ====== ПАРАМЕТРЫ ТЕМЫ ======
 $bg: #e9e7e3;
@@ -17,7 +18,7 @@ $base-font: 12;
 
 // Компонентная единица:  em от базового кегля внутри компонента
 @function em12($px) {
-  @return ($px / $base-font) * 1em;
+  @return math.div($px, $base-font) * 1em;
 }
 
 @mixin bevel-out {
@@ -50,6 +51,8 @@ $base-font: 12;
 
   // тонкая внутренняя рамка (тоже «резиновая» по масштабу компонента)
   box-shadow: 0 0 0 em12(1) #000 inset;
+
+  scale: 0.7;
 }
 
 // ====== TITLEBAR ======
@@ -111,6 +114,7 @@ $base-font: 12;
   padding: em12(6);
   border-bottom: em12(1) solid $line;
   background: $bg-light;
+  margin-left: em12(2);
 }
 .promo {
   @include bevel-out;

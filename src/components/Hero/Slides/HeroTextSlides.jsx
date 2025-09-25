@@ -17,14 +17,7 @@ export default function HeroTextSlides({ isMobile, x }) {
                 decoding="async"
                 className={styles.hero__image}
               />
-              <p className={styles.hero__text}>
-                {slide.text.map((line, i) => (
-                  <span key={i}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </p>
+              <p className={styles.hero__text}>{slide.text}</p>
             </div>
           </div>
         ))}

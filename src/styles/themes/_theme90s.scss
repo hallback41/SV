@@ -29,6 +29,7 @@
   --border-color: #f0f0c0;
   --border-width: #{rem(4)};
   --border-radius: 2px;
+  --border: #{rem(8)} double var(--border-color);
 
   // Shadows
   --shadow-soft: 1px 1px 0 #777;

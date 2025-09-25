@@ -7,12 +7,12 @@
   z-index: -1;
 
   &Wrapper {
-    height: 200vh; // важно! чтобы можно было прокрутить
     position: relative;
+    height: 200vh;
 
     @include mobile {
-      height: auto; // <— секция будет ровно по контенту
-      min-height: 100vh; // (по желанию, чтобы было хотя бы на экран)
+      height: auto;
+      min-height: 100vh;
     }
   }
 
@@ -20,19 +20,20 @@
     position: sticky;
     top: 0;
     overflow: hidden;
+
     @include mobile {
-      overflow-x: visible; // позволяем дочернему элементу показывать свой скролл
+      overflow-x: visible;
     }
   }
 
   &__box {
     position: relative;
-    background-color: var(--color-bg-main);
-    font-family: var(--font-family-main);
-    padding: var(--padding);
-    transition: var(--transition);
-    border: rem(8) double var(--border-color);
     z-index: 1;
+    padding: var(--padding);
+    border: var(--border);
+    font-family: var(--font-family-main);
+    background-color: var(--color-bg-main);
+    transition: var(--transition);
   }
 
   &__grid {
@@ -57,8 +58,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     grid-area: photo;
+    width: 100%;
     padding: 0;
     border-color: var(--color-bg-accent-button);
 
@@ -67,20 +68,20 @@
     }
 
     &--Polaroid {
-      background: white;
-      padding: 12px 12px 30px; // нижний отступ шире
-      border: 1px solid #ccc;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: inline-block;
       width: fit-content;
       text-align: center;
-      display: inline-block;
+      padding: rem(12) rem(12) rem(30);
+      border: rem(1) solid #ccc;
+      background: white;
+      box-shadow: 0 rem(4) rem(8) rgba(0, 0, 0, 0.3);
 
       @include tablet {
-        padding: 6px 6px 15px; // нижний отступ шире
+        padding: rem(6) rem(6) rem(15);
       }
 
       @include mobile {
-        padding: 18px 18px 36px;
+        padding: rem(18) rem(18) rem(36);
       }
 
       img {
@@ -89,17 +90,17 @@
 
       .caption {
         @include fluid-text(22, 15);
-        margin-top: 8px;
         color: #333;
+        margin-top: rem(8);
       }
     }
   }
 
   &__yearBlock {
     grid-area: year;
-    max-height: rem(50);
     display: flex;
     align-items: center;
+    max-height: rem(50);
     color: var(--color-bg-highlight);
 
     @include mobile {
@@ -114,48 +115,49 @@
 
   &__textBlock {
     grid-area: text;
-    overflow: hidden;
     position: relative;
-    padding: 0;
     width: 100%;
+    padding: 0;
+    overflow: hidden;
 
     @include mobile {
-      overflow: visible; // чтобы полоса/оверлей скролла не пряталась
+      overflow: visible;
     }
   }
 
   &__textSlides {
     display: flex;
+    flex-wrap: nowrap;
     width: 100%;
-    will-change: transform;
     gap: rem(14);
-    flex-wrap: nowrap; // важно
+    will-change: transform;
 
     @include mobile {
-      overflow-x: auto; // включаем горизонтальный скролл
+      overflow-x: auto;
       overflow-y: hidden;
-      scroll-snap-type: x mandatory; // прилипания по слайдам
+      scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       overscroll-behavior-x: contain;
-      padding-bottom: rem(6); // чуть места под оверлей скролла
+      padding-bottom: rem(6);
+      will-change: auto;
     }
   }
 
   &__inlineImage {
-    width: rem(98); // или 32–48 в зависимости от масштаба
+    float: left;
+    vertical-align: middle;
+    shape-outside: margin-box;
+    width: rem(98);
     height: auto;
     margin: 0 rem(6);
-    vertical-align: middle;
-    float: left; // или left для другого эффекта
-    shape-outside: margin-box;
     border-radius: rem(3);
 
     @include laptop {
-      width: rem(78); // или 32–48 в зависимости от масштаба
+      width: rem(78);
     }
 
     @include tablet {
-      width: rem(58); // или 32–48 в зависимости от масштаба
+      width: rem(58);
     }
 
     @include mobile {
@@ -164,12 +166,12 @@
   }
 
   &__textSlide {
-    flex: 0 0 100%; // один слайд = ширина экрана
+    flex: 0 0 100%;
     width: 100%;
     flex-shrink: 0;
     padding: rem(32);
     box-sizing: border-box;
-    scroll-snap-align: start; // <<< добавь это
+    scroll-snap-align: start;
 
     @include mobile {
       padding: rem(22);
@@ -188,7 +190,7 @@
   }
 
   &__textContent {
-    display: block; // блок вместо флекса
+    display: block;
     position: relative;
   }
 
@@ -199,21 +201,22 @@
     margin-left: rem(14);
     margin-bottom: rem(16);
     border-radius: rem(4);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.15);
     transform: rotate(3deg);
 
     @include tablet {
       width: rem(160);
     }
+
     @include mobile {
       width: rem(120);
     }
   }
 
   &__text {
+    @include fluid-text(22, 14);
     color: #333;
     line-height: 1.6;
-    @include fluid-text(22, 14);
 
     span {
       color: var(--color-bg-highlight);
@@ -231,60 +234,58 @@
 
   &__skillsBlock {
     grid-area: skills;
-    overflow: hidden;
     position: relative;
     width: 100%;
+    overflow: hidden;
 
     @include mobile {
-      overflow: visible; // даём дочернему блоку скроллиться
+      overflow: visible;
     }
   }
 
   &__skillsSlides {
-    height: 100%;
     display: flex;
+    height: 100%;
+    gap: 0;
     will-change: transform;
-    gap: 0; // <— важно для десктопа
 
     @include mobile {
       gap: rem(14);
-      overflow-x: auto; // включаем горизонтальный скролл
+      overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      overscroll-behavior-x: contain; // (лучше добавить, как у текста)
+      overscroll-behavior-x: contain;
       padding-bottom: rem(6);
+      will-change: auto;
     }
   }
 
   &__skillSlide {
-    flex: 0 0 100%; // каждый слайд = ширина экрана
-    height: 100%;
+    flex: 0 0 100%;
     min-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    background-color: var(--color-bg-highlight);
-    gap: rem(14);
     flex-shrink: 0;
+    height: 100%;
     padding: 0;
+    gap: rem(14);
     box-sizing: border-box;
+    background-color: var(--color-bg-highlight);
     scroll-snap-align: start;
   }
 
   &__pop--1 {
     grid-area: pop1;
   }
-
   &__pop--2 {
     grid-area: pop2;
   }
-
   &__pop--3 {
     grid-area: pop3;
   }
-
   &__pop--4 {
     grid-area: pop4;
   }

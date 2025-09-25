@@ -24,6 +24,7 @@
   --border-color: #f0f0c0;
   --border-width: 0.25rem;
   --border-radius: 2px;
+  --border: 0.5rem double var(--border-color);
   --shadow-soft: 1px 1px 0 #777;
   --shadow-pressed: inset 2px 2px 0 #333;
   --divider-color: #444;
